@@ -21,6 +21,9 @@
 				<Button type="submit" formmethod="post" formaction="AllMovieController">Show ALL Movies</Button>
 			</td>
 
+			<td>
+				<Button type="submit" formmethod="post" formaction="AllUserController">Show ALL Users</Button>
+			</td>
 		</tr>
 
 		<tr>

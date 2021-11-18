@@ -15,7 +15,7 @@
 <br>
 <br>
 <h3 style="text-align:center"> This is your edit page, ${sessionScope.name}, please enter the new details for the movie ${movieToEdit.title}, then press update button below </h3>
-<h4 style="text-align:center"> Note: you may not edit a movies title</h4>
+<h4 style="text-align:center"> Note: you may not edit a movie's title</h4>
 <br>
 <br>
 
