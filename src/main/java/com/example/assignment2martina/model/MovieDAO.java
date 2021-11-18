@@ -43,7 +43,6 @@ public enum MovieDAO {
 		return movies;
 	}
 
-
 	public void save(String title, String star, String year, String email) throws Exception {
 
 		Connection conn = getConnection();
@@ -86,7 +85,6 @@ public enum MovieDAO {
 //	}
 	}
 
-
 	public Movie getMovieInfoForUpdate(String title, String email) throws Exception {
 		Connection conn = getConnection();
 		Statement stmt = conn.createStatement();
@@ -101,7 +99,6 @@ public enum MovieDAO {
 		}
 return null;
 }
-
 
 	public ArrayList<Movie> list() throws Exception{
 		ArrayList<Movie> Movies = new ArrayList();

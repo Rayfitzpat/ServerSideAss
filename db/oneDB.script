@@ -28,7 +28,7 @@ SET FILES NIO TRUE
 SET FILES NIO SIZE 256
 SET FILES LOG TRUE
 SET FILES LOG SIZE 50
-SET FILES CHECK 637
+SET FILES CHECK 944
 SET DATABASE COLLATION "SQL_TEXT" PAD SPACE
 CREATE USER SA PASSWORD DIGEST 'd41d8cd98f00b204e9800998ecf8427e'
 ALTER USER SA SET LOCAL TRUE
@@ -50,9 +50,11 @@ INSERT INTO USER VALUES('Ray','ray@gmail.com','12345')
 INSERT INTO USER VALUES('Mark','mark@gmail.com','99999')
 INSERT INTO USER VALUES('Jack','jack@gmail.com','password')
 INSERT INTO USER VALUES('Mary','mary@gmail.com','password')
-INSERT INTO USER VALUES('Jack','yuliaa@gmail.com','password')
 INSERT INTO USER VALUES('Ben','ben@gmail.com','password')
 INSERT INTO USER VALUES('Erik','erik@gmail.com','password')
+INSERT INTO USER VALUES('Val','val@gmail.com','password')
+INSERT INTO USER VALUES('Donnie','don@gmail.com','password')
+INSERT INTO USER VALUES('Yuliia','yuliia@gmail.com','password')
 INSERT INTO MOVIES VALUES('The Matrix','Keanu Reeves','1999','ben@gmail.com')
 INSERT INTO MOVIES VALUES('The Matrix','Keanu Reeves','1999','mary@gmail.com')
 INSERT INTO MOVIES VALUES('The Return of the King','Elijah Wood','2005','mary@gmail.com')
@@ -60,7 +62,8 @@ INSERT INTO MOVIES VALUES('The Return of the King','Elijah Wood','2005','ray@gma
 INSERT INTO MOVIES VALUES('The Return of the King','Elijah Wood','2005','yuliia@gmail.com')
 INSERT INTO MOVIES VALUES('The Return of the King','Elijah Wood','2005','jack@gmail.com')
 INSERT INTO MOVIES VALUES('The Return of the King','Elijah Wood','2005','mark@gmail.com')
-INSERT INTO MOVIES VALUES('Inception','Leo DiCaprio','2010','mark@gmail.com')
-INSERT INTO MOVIES VALUES('Inception','Leo DiCaprio','2010','ray@gmail.com')
 INSERT INTO MOVIES VALUES('Inception','Leo DiCaprio','2010','ben@gmail.com')
+INSERT INTO MOVIES VALUES('Inception','Leo DiCaprio','2010','ray@gmail.com')
+INSERT INTO MOVIES VALUES('Inception','Leo DiCaprio','2010','mary@gmail.com')
 INSERT INTO MOVIES VALUES('Inception','Leo DiCaprio','2010','jack@gmail.com')
+INSERT INTO MOVIES VALUES('Avatar','Mike Myers','2009','jack@gmail.com')

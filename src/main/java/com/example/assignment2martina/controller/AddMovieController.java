@@ -38,20 +38,18 @@ public class AddMovieController extends HttpServlet {
             if (!title.equals("") && !star.equals("") && !year.equals("")) {
                 for (int i = 0; i < movies.size(); i++) {
 
-                    System.out.println("Title: " + title + " Star: " + star + " Year: ");
-                    if (title.equals(movies.get(i).getTitle())) {
-                        if (email.equals(movies.get(i).getEmail())) {
-                            JOptionPane.showMessageDialog(null, title + " is already registered to this email");
-                            request.getRequestDispatcher("main.jsp").forward(request, response);
-                        } else {
-                            count++;
-                            System.out.println(count);
-                        }
+                    System.out.println("Title: " + title + " Star: " + star + " Year: " + year);
+                    if (title.equals(movies.get(i).getTitle()) && (email.equals(movies.get(i).getEmail()))) {
+                        JOptionPane.showMessageDialog(null, title + " is already registered to this email");
+                        request.getRequestDispatcher("main.jsp").forward(request, response);
+                        count++;
+                        System.out.println(count);
                     }
                 }
+
                 System.out.println("Count: " + count);
-                System.out.println("Array Size: " +movies.size());
-                if (count == 0) {
+                System.out.println("Array Size: " + movies.size());
+                if (!(count == 1)) {
 //                    movies.add(m1);
                     MovieDAO.instance.save(title, star, year, email);
                     JOptionPane.showMessageDialog(null, "You have added the movie " + title);
@@ -59,8 +57,8 @@ public class AddMovieController extends HttpServlet {
                 } else {
                     System.out.println("Movie addition has gone wrong");
                 }
-
-            }else {
+            }
+            else {
                 System.out.println("Title: " + title + " Star: " + star + " Year: ");
                 JOptionPane.showMessageDialog(null, " input fields cannot be left empty");
                 request.getRequestDispatcher("main.jsp").forward(request, response);
