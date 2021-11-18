@@ -14,6 +14,8 @@
 <body>
 
 <h1>Hey ${sessionScope.name}, These are all the movies you have rented</h1>
+
+<%--Cycles through array list and prints them out.  The variable userMovieList is set in UserMovieController--%>
 <c:forEach items="${userMovieList}" var="movie">
     Movie Title: <c:out value="${movie.title }"/><br>
     Movie Star: <c:out value="${movie.star}"/><br>

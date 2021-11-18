@@ -44,63 +44,35 @@ public class UserController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		// Setting the variables to be used
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+
+		// created a new object of User called u1
 		User u1 = new User(name, email, password);
-		System.out.println("Before Try");
 
 		try {
-			System.out.println("Start Try");
+			// Created an arrayList called users and sets it to the users in the Db by calling the list() method in UserDAO
 			ArrayList<User> users = UserDAO.instance.list();
-			System.out.println("Start Array");
-			for (int i =0; i< users.size(); i++) {
-				System.out.println("Start if");
-				System.out.println("users email: " + email);
-				System.out.println(users.get(i).getEmail());
-				if (email.equals(users.get(i).getEmail())) {
-					System.out.println("Get Email");
-					System.out.println("email success");
-					if (password.equals(users.get(i).getPassword())) {
-						System.out.println("pw success");
+			for (int i =0; i< users.size(); i++) { // cycles through the array
+				if (email.equals(users.get(i).getEmail())) {  // checks the email to see if it already exists in the DB
+					if (password.equals(users.get(i).getPassword())) { // checks the password against the DB
+						// sets Session Storage info for name and email
 						HttpSession session = request.getSession();
 						session.setAttribute("email", email);
 						session.setAttribute("name", name);
-
-
-						request.getRequestDispatcher("main.jsp").forward(request, response);
-
-					} else {
-						System.out.println("pw is wrong");
-//						request.getParameter("#message").equals("Your Password is incorrect");
+						request.getRequestDispatcher("main.jsp").forward(request, response); // logs the user in by sending them to the main.jsp page
+					} else { // if Pw doesnt match the email in the Db then user is alerted and page is reloaded
 						JOptionPane.showMessageDialog(null, "The email address is valid but your Password is incorrect");
 						request.getRequestDispatcher("index.jsp").forward(request, response);
-
-//						request.getParameter("message").equals("Your Password is incorrect");
-//						request.getRequestDispatcher("main.jsp").forward(request, response);
 					}
 				} else {
 					System.out.println("email is wrong");
-//					request.getParameter("message").equals("email is wrong");
-//
-				}
+				} // redirects the user to register.jsp if email doesnt match the DB
 			}request.getRequestDispatcher("register.jsp").forward(request, response);
-
-			//UserDAO.instance.save(u1);
-			//String check = "mcurran@ait.ie";
-			//User user = UserDAO.instance.selectOne(check);
-			//System.out.println(u1.getName());
-//			request.setAttribute("userList", users);
-//			request.getRequestDispatcher("showUser.jsp").forward(request, response);
 		} catch (Exception e) {
 			System.out.println("information could not be retrieved");
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-//			request.getRequestDispatcher("register.jsp").forward(request, response);
 		}
-		
-		
 	}
-
 }

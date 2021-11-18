@@ -33,27 +33,23 @@ public class UserMovieController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		// TODO Auto-generated method stub
+		// Setting the variables to be used
 		String title = request.getParameter("title");
 		String star = request.getParameter("star");
 		String year = request.getParameter("year");
 		String email = (String)session.getAttribute("email");
-
 		String name = request.getParameter("name");
-
+	// creates an arrayList called userMovies
 		ArrayList<Movie> userMovies = null;
-//		Movie movies = new Movie(title,star,year,email);
 
 		try {
-//				MovieDAO.save(title,star,year,email);
-				userMovies = MovieDAO.instance.selectOne(email);
-				request.setAttribute("userMovieList", userMovies);
-				request.getRequestDispatcher("showUserMovies.jsp").forward(request, response);
+				userMovies = MovieDAO.instance.selectOne(email); // sets userMovies to contain the results of the selectOne() method
+				request.setAttribute("userMovieList", userMovies); // sets userMovies to "userMovieList"
+				request.getRequestDispatcher("showUserMovies.jsp").forward(request, response); // redirects the user to showMovies.jsp
 			}
 			 catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		request.setAttribute("userMovieList", userMovies);
 		request.getRequestDispatcher("showMovies.jsp").forward(request, response);
 	}

@@ -13,6 +13,7 @@
 </head>
 <body>
 
+<%-- Takes all the items from allUserList from allUserController and prints them out --%>
 <h1>Hey ${sessionScope.name}, this is a list of all Users</h1>
 <c:forEach items="${allUserList}" var="user">
     User Name: <c:out value="${user.name }"/><br>

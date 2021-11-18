@@ -44,10 +44,8 @@
 <br>
 <h3 style="text-align:center;">Please fill out the form and choose add your Movie to the DB</h3>
 
-<%--		<input type="hidden" name="name" value = "${param.name}"/> <br>--%>
-<%--		<input type="hidden" name="email" value="${param.email}"/><br>--%>
-<%--		<input type="hidden" name="password" value="${param.password}"/> <br>--%>
 
+<%--Basic table with multiple buttons to pass info from the table to different pages or controllers--%>
 	<form method="post" action="AddMovieController">
 		<table style="margin: auto">
 			<tr>
@@ -95,7 +93,6 @@
 				</td>
 			</tr>
 
-
 			<td style="color: white">
 				_
 			</td>
@@ -115,14 +112,11 @@
 			</tr>
 		</table>
 	</form>
-
 <h3 style="text-align:center;"> Please enter the Movie name above and select Edit or Delete</h3>
+
 <form action="EditMovie.jsp" method = "POST">
 	<table style="margin: auto">
-
-
 		</table>
-
 	</form>
 </body>
 

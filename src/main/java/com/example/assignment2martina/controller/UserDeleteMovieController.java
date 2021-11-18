@@ -16,19 +16,14 @@ public class UserDeleteMovieController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        // Setting the variables to be used
         HttpSession session = request.getSession();
-        String email = (String)session.getAttribute("email");
+        String email = (String)session.getAttribute("email"); // retrieved from session storage
         String title = request.getParameter("title");
 
-
-
-        System.out.println(email);
-        System.out.println(title);
-
         try {
-            MovieDAO.instance.delete(title,email);
-            request.getRequestDispatcher("UserMovieController").forward(request, response);
+            MovieDAO.instance.delete(title,email); // calls the delete() method using the parameters of title and email from above
+            request.getRequestDispatcher("UserMovieController").forward(request, response); // opens the UserMovieController page
         } catch (Exception e) {
             e.printStackTrace();
         }

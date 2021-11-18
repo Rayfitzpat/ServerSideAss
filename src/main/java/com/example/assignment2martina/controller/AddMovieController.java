@@ -22,6 +22,7 @@ public class AddMovieController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Setting the variables
         HttpSession session = request.getSession();
 
         String title = request.getParameter("title");
@@ -29,26 +30,22 @@ public class AddMovieController extends HttpServlet {
         String year = request.getParameter("year");
 
         String email = (String) session.getAttribute("email");
+        
 
-//        Movie m1 = new Movie(title, star, year, email);
-
+        
         int count = 0;
         try {
             ArrayList<Movie> movies = MovieDAO.instance.list();
             if (!title.equals("") && !star.equals("") && !year.equals("")) {
                 for (int i = 0; i < movies.size(); i++) {
-
-                    System.out.println("Title: " + title + " Star: " + star + " Year: " + year);
+// cycling through the Movie Array, checking if the title and email match and if they do, reload the main page and alert the user that that email is already registered to that movie
                     if (title.equals(movies.get(i).getTitle()) && (email.equals(movies.get(i).getEmail()))) {
                         JOptionPane.showMessageDialog(null, title + " is already registered to this email");
                         request.getRequestDispatcher("main.jsp").forward(request, response);
                         count++;
-                        System.out.println(count);
                     }
                 }
-
-                System.out.println("Count: " + count);
-                System.out.println("Array Size: " + movies.size());
+// Count will be one if the it matches the email and name so if its != 1 then go ahead and add the new movie to the DB
                 if (!(count == 1)) {
 //                    movies.add(m1);
                     MovieDAO.instance.save(title, star, year, email);
@@ -58,30 +55,16 @@ public class AddMovieController extends HttpServlet {
                     System.out.println("Movie addition has gone wrong");
                 }
             }
+            // Stops empty input fields from being entered
             else {
-                System.out.println("Title: " + title + " Star: " + star + " Year: ");
                 JOptionPane.showMessageDialog(null, " input fields cannot be left empty");
                 request.getRequestDispatcher("main.jsp").forward(request, response);
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
-
-
-
-
-
-//        try {
-//            MovieDAO.instance.save(m1);
-//            request.getRequestDispatcher("EditMovie.jsp").forward(request, response);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
 
 

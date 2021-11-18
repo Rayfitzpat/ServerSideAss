@@ -14,11 +14,14 @@
 <body>
 <br>
 <br>
-<h3 style="text-align:center"> This is your edit page, ${sessionScope.name}, please enter the new details for the movie ${movieToEdit.title}, then press update button below </h3>
+<%--User sessionScope to get users name--%>
+<h3 style="text-align:center"> This is your edit page ${sessionScope.name}, please enter the new details for the movie ${movieToEdit.title}, then press update button below </h3>
 <h4 style="text-align:center"> Note: you may not edit a movie's title</h4>
 <br>
 <br>
 
+
+<%-- basic table retrieves title, star and year from movieToEdit found in EditMovieController--%>
 <form action = "UpdateMovieController" method="post">
     <table style="margin: auto">
         <tr>
@@ -54,6 +57,7 @@
         </tr>
         <tr>
             <td>
+                <%--Submits to UpdateMovieController--%>
                 <input type="submit" value="EDIT" name="submit"/> <br>
             </td>
         </tr>

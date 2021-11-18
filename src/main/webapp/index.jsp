@@ -21,6 +21,8 @@
         <br>
         <br>
         <h3 style="text-align:center;">Please login or register:</h3>
+
+<%--        Basic Table to get Users login details.  Session Storage set for name, email and pw.  Hidden fields used to pass info between index and register pages to show alternate way of doing storage--%>
         <form method="post" action="UserController">
             <table style="margin:auto">
                 <tr>

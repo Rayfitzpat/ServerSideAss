@@ -26,39 +26,32 @@ public class AllMovieController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        response.getWriter().append("Served at: ").append(request.getContextPath());
-    }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
+
+        // Sets the variables to be used
         String title = request.getParameter("title");
         String star = request.getParameter("star");
         String year = request.getParameter("year");
         String email = request.getParameter("email");
 
         String name = request.getParameter("name");
-
+        // Creates an Array list called allMovies
         ArrayList<Movie> allMovies = null;
-//		Movie movies = new Movie(title,star,year,email);
 
         try {
-//				MovieDAO.save(title,star,year,email);
+            // Sets allmovies to the DB Movie list
             allMovies = MovieDAO.instance.list();
-            request.setAttribute("allMovieList", allMovies);
-            request.getRequestDispatcher("showMovies.jsp").forward(request, response);
+            request.setAttribute("allMovieList", allMovies);  // sets the variable "allMovieList" to allMovies
+            request.getRequestDispatcher("showMovies.jsp").forward(request, response); // sends the user to ShowMovies.jsp page
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-
         request.setAttribute("allMovieList", allMovies);
         request.getRequestDispatcher("showMovies.jsp").forward(request, response);
     }

@@ -10,6 +10,8 @@
 </head>
 <body>
 <h1> Hey ${sessionScope.name}, These are all the current users</h1>
+
+<%--Cycles through array list of users and prints them out.--%>
 <c:forEach items="${user}" var="user">
 	<c:out value="${user.name}"/>
 	<c:out value="${user.email}"/> <br>
